@@ -2,494 +2,604 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="AD Studiocasa: falegnameria artigianale a Passo di Mirabella Eclano. Mobili e porte in massello, cucine su misura, boiserie, armadi e infissi (alluminio-legno, PVC). Operativi in tutta Italia." />
-  <title>AD Studiocasa — Arredi su misura in massello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AD Studiocasa | Studio di Interior Design</title>
+  <meta name="description" content="AD Studiocasa è uno studio di interior design: progettazione d’interni, arredi su misura, consulenze e direzione lavori. Operiamo in tutta Italia." />
+  <meta name="theme-color" content="#0f0f10" />
+
+  <!-- Open Graph (anteprima social) -->
+  <meta property="og:title" content="AD Studiocasa | Studio di Interior Design" />
+  <meta property="og:description" content="Progetti su misura • Il tuo stile al centro • Eleganza che dura." />
+  <meta property="og:type" content="website" />
+  <!-- opzionale: se crei assets/cover.jpg -->
+  <meta property="og:image" content="assets/cover.jpg" />
+
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#0f1620;
-      --soft:#141d29;
-      --text:#e9eef6;
-      --muted:#a7b1c2;
-      --line:rgba(255,255,255,.08);
-      --accent:#c89b4a;
-      --accent2:#6fd3c5;
-      --shadow: 0 12px 28px rgba(0,0,0,.35);
+      --bg:#0f0f10;
+      --card:#141416;
+      --text:#f3f3f3;
+      --muted:#b9b9b9;
+      --line:rgba(255,255,255,.10);
+      --accent:#d2b48c; /* champagne */
+      --shadow: 0 18px 60px rgba(0,0,0,.50);
       --radius: 18px;
       --max: 1120px;
+      --pad: 22px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
       background:
-        radial-gradient(900px 500px at 75% 0%, rgba(200,155,74,.20), transparent 55%),
-        radial-gradient(900px 500px at 10% 10%, rgba(111,211,197,.14), transparent 55%),
-        linear-gradient(180deg, #070a0f, var(--bg));
-      line-height:1.5;
+        radial-gradient(1200px 600px at 20% -10%, rgba(210,180,140,.16), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(210,180,140,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-
-    header{
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,15,20,.72);
+      background: rgba(15,15,16,.76);
       border-bottom:1px solid var(--line);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      height:70px;
+      padding:14px 0; gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(200,155,74,.95), rgba(111,211,197,.85));
-      box-shadow: 0 10px 18px rgba(0,0,0,.35);
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(210,180,140,.35), rgba(210,180,140,.06));
+      border:1px solid rgba(210,180,140,.25);
+      display:grid; place-items:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+      flex:0 0 auto;
     }
-    .brand h1{font-size:14px; margin:0; letter-spacing:.6px; text-transform:uppercase}
-    .brand p{margin:0; font-size:12px; color:var(--muted)}
-    nav ul{list-style:none; display:flex; gap:16px; padding:0; margin:0; align-items:center}
-    nav a{font-size:13px; color:var(--muted)}
-    nav a:hover{color:var(--text)}
+    /* Se hai un logo png: crea assets/logo.png e scommenta:
+       .mark img{width:100%;height:100%;object-fit:contain;padding:8px;}
+    */
+    .mark span{font-weight:800; letter-spacing:.5px; color:rgba(243,243,243,.92)}
+    .brand h1{font-size:14px; margin:0; letter-spacing:.35px; text-transform:uppercase}
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .menu{display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .menu a.link{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:12px;
+      border:1px solid transparent;
+    }
+    .menu a.link:hover{color:var(--text); border-color:rgba(255,255,255,.08); background:rgba(255,255,255,.04)}
 
-    .cta{display:flex; gap:10px; align-items:center;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      padding:12px 16px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
       color:var(--text);
-      font-size:13px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight:650;
       cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
       user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.14)}
+    .btn:hover{background: rgba(255,255,255,.06); transform: translateY(-1px)}
     .btn.primary{
-      border-color: rgba(200,155,74,.45);
-      background: linear-gradient(135deg, rgba(200,155,74,.22), rgba(111,211,197,.14));
+      border-color: rgba(210,180,140,.30);
+      background: linear-gradient(180deg, rgba(210,180,140,.22), rgba(210,180,140,.10));
+    }
+    .btn.ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.12);
     }
 
-    .burger{
-      display:none;
-      width:42px; height:42px; border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      align-items:center; justify-content:center;
+    header.hero{padding:56px 0 26px}
+    .hero-grid{
+      display:grid; grid-template-columns: 1.15fr .85fr;
+      gap:22px; align-items:stretch;
     }
-    .burger span{width:18px; height:2px; background: var(--text); position:relative; display:block; border-radius:2px;}
-    .burger span::before,.burger span::after{content:""; position:absolute; left:0; width:18px; height:2px; background: var(--text); border-radius:2px;}
-    .burger span::before{top:-6px}
-    .burger span::after{top:6px}
-
-    .hero{padding:64px 0 18px;}
-    .hero-grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:22px; align-items:stretch;}
-    .hero-card{
+    .panel{
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
       border-radius: var(--radius);
-      padding:28px;
-      overflow:hidden;
+      padding:26px;
+      box-shadow: var(--shadow);
       position:relative;
+      overflow:hidden;
+    }
+    .panel:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 220px at 30% 0%, rgba(210,180,140,.25), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
     }
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:12px; color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
       padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(200,155,74,.35);
-      background: rgba(200,155,74,.08);
-      color: rgba(233,238,246,.95);
-      font-size:12px;
+      background: rgba(255,255,255,.03);
+      position:relative;
+      width:fit-content;
     }
-    .hero h2{font-size:40px; line-height:1.08; margin:14px 0 10px; letter-spacing:-.6px;}
-    .hero p{margin:0 0 18px; color: var(--muted); font-size:15px; max-width: 64ch;}
-    .points{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
-    .pill{
-      padding:10px 12px; border-radius:999px;
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 0 6px rgba(210,180,140,.12)}
+    .hero-title{
+      font-size:40px; line-height:1.08; margin:16px 0 10px;
+      letter-spacing:-.6px; position:relative;
+    }
+    .hero-sub{
+      margin:0 0 18px; color:var(--muted); font-size:15px;
+      max-width: 62ch; position:relative;
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; position:relative}
+
+    .side{
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-size:12.5px;
-    }
-
-    .hero-media{
-      border:1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(20,29,41,.95), rgba(15,22,32,.85));
+      padding:22px;
       box-shadow: var(--shadow);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
+      display:flex; flex-direction:column; justify-content:space-between;
+      min-height: 100%;
     }
-    .hero-media .ph{
-      flex:1; min-height: 320px; position:relative;
-      background:
-        radial-gradient(500px 320px at 60% 30%, rgba(200,155,74,.22), transparent 55%),
-        radial-gradient(520px 360px at 30% 60%, rgba(111,211,197,.14), transparent 55%),
-        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+    .side h3{margin:0 0 6px; font-size:14px; letter-spacing:.2px}
+    .side p{margin:0; color:var(--muted); font-size:13px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      width:fit-content;
     }
-    .ph::after{
-      content:"Sostituisci con una foto del laboratorio / progetto";
-      position:absolute; inset:auto 18px 18px 18px;
-      font-size:12px; color:rgba(233,238,246,.65);
-      padding:10px 12px; border-radius:12px;
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.15);
-    }
-    .stats{display:grid; grid-template-columns: repeat(3, 1fr); gap:1px; background: var(--line);}
-    .stat{padding:14px 16px; background: rgba(0,0,0,.12);}
-    .stat strong{display:block; font-size:16px}
-    .stat span{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    .pill strong{color:var(--text); font-weight:800}
 
-    section{padding:56px 0}
-    .section-head{display:flex; justify-content:space-between; gap:16px; align-items:flex-end; margin-bottom:18px}
-    .section-head h3{margin:0; font-size:24px; letter-spacing:-.2px}
-    .section-head p{margin:0; color:var(--muted); max-width:62ch; font-size:14px}
-
-    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;}
+    section{padding:26px 0}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px}
+    .section-head h2{margin:0; font-size:18px; letter-spacing:.2px}
+    .section-head p{margin:0; color:var(--muted); font-size:13px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
     .card{
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      border-radius: 18px;
+      border-radius: var(--radius);
       padding:18px;
-      box-shadow: 0 10px 20px rgba(0,0,0,.22);
     }
-    .service{grid-column: span 4}
-    .service h4{margin:10px 0 6px; font-size:16px}
-    .service p{margin:0; color:var(--muted); font-size:13.5px}
+    .card h3{margin:0 0 8px; font-size:14px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+    .fineprint{color:var(--muted); font-size:12px}
 
-    .icon{
-      width:42px; height:42px; border-radius:14px;
-      display:grid; place-items:center;
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:16px; border-radius: var(--radius);
       border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(135deg, rgba(200,155,74,.16), rgba(111,211,197,.10));
-      color: var(--text);
-      font-weight:700;
-      font-size:12px;
+      background: rgba(255,255,255,.02);
     }
+    .num{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid rgba(210,180,140,.28);
+      background: rgba(210,180,140,.10);
+      display:grid; place-items:center;
+      font-weight:800;
+      flex:0 0 auto;
+    }
+    .step b{display:block; margin-bottom:4px; font-size:14px}
+    .step span{color:var(--muted); font-size:13px}
 
-    .portfolio .shot{grid-column: span 4; padding:0; overflow:hidden}
-    .shot .thumb{
-      height:180px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-        radial-gradient(460px 220px at 30% 40%, rgba(200,155,74,.18), transparent 55%),
-        radial-gradient(460px 220px at 70% 70%, rgba(111,211,197,.12), transparent 55%);
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .shot{
+      grid-column: span 4;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
       position:relative;
+      min-height: 190px;
+      cursor:pointer;
+      transition: transform .15s ease;
     }
-    .shot .thumb::after{
-      content:"Foto progetto";
-      position:absolute; left:14px; bottom:12px;
-      font-size:12px; color:rgba(233,238,246,.7);
-      padding:8px 10px; border-radius:12px;
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.18);
+    .shot:hover{transform: translateY(-2px)}
+    .shot img{width:100%; height:100%; object-fit:cover; display:block; opacity:.93}
+    .shot .cap{
+      position:absolute; left:12px; right:12px; bottom:12px;
+      background: rgba(15,15,16,.58);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding:10px 12px;
+      font-size:12px; color: var(--muted);
     }
-    .shot .meta{padding:14px 16px; border-top:1px solid var(--line)}
-    .shot .meta strong{display:block; font-size:14px}
-    .shot .meta span{display:block; font-size:12.5px; color:var(--muted); margin-top:3px}
+    .shot .cap b{color:var(--text); display:block; margin-bottom:2px; font-size:13px}
 
-    .step{grid-column: span 3}
-    .step .num{font-size:12px; color:rgba(233,238,246,.75); letter-spacing:.8px; text-transform:uppercase}
-    .step h4{margin:8px 0 6px}
-    .step p{margin:0; color:var(--muted); font-size:13.5px}
+    .modal{
+      position:fixed; inset:0; z-index:100;
+      display:none; align-items:center; justify-content:center;
+      background: rgba(0,0,0,.78);
+      padding: 18px;
+    }
+    .modal.open{display:flex}
+    .modal-inner{
+      width:min(980px, 96vw);
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(18,18,18,.88);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .modal-top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 14px; border-bottom:1px solid rgba(255,255,255,.08);
+      color:var(--muted); font-size:12px;
+    }
+    .modal-top button{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      border-radius: 12px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    .modal-top button:hover{background: rgba(255,255,255,.06)}
+    .modal-img{width:100%; max-height: 70vh; object-fit:contain; display:block; background:#0c0c0c}
 
-    .review{grid-column: span 4}
-    .review p{margin:0; color:rgba(233,238,246,.88)}
-    .review .who{margin-top:12px; font-size:13px; color:var(--muted)}
-
-    .contact .box{grid-column: span 7}
-    .contact .aside{grid-column: span 5}
-
-    .form{display:grid; gap:10px; margin-top: 12px;}
-    label{font-size:12px; color:var(--muted)}
+    form{display:grid; gap:10px}
     input, textarea{
       width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
       padding:12px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-      color: var(--text);
+      font-size:14px;
       outline:none;
     }
-    input:focus, textarea:focus{border-color: rgba(200,155,74,.45)}
-    textarea{min-height:120px; resize:vertical}
+    textarea{min-height:110px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(210,180,140,.35)}
 
-    .note{
-      padding:14px 14px;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(200,155,74,.10), rgba(255,255,255,.02));
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:12px;
     }
-    .note strong{display:block; margin-bottom:6px}
-    .note ul{margin:0; padding-left:18px; color:var(--muted)}
-    .note li{margin:6px 0}
+    .footer-grid{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    }
 
-    footer{border-top:1px solid var(--line); padding:26px 0; color:var(--muted); font-size:12.5px;}
-    .foot{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;}
-
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr;}
-      .hero h2{font-size:34px}
-      .service{grid-column: span 6}
-      .portfolio .shot{grid-column: span 6}
-      .review{grid-column: span 6}
-      .step{grid-column: span 6}
-      .contact .box{grid-column: span 12}
-      .contact .aside{grid-column: span 12}
-      .brand{min-width:auto}
-      nav ul{display:none}
-      .burger{display:inline-flex}
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr}
+      .hero-title{font-size:34px}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .shot{grid-column: span 6}
     }
     @media (max-width: 560px){
-      .service{grid-column: span 12}
-      .portfolio .shot{grid-column: span 12}
-      .review{grid-column: span 12}
-      .step{grid-column: span 12}
-      .stats{grid-template-columns: 1fr}
+      .menu a.link{display:none}
+      .shot{grid-column: span 12}
+      .hero-title{font-size:30px}
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container">
+  <div class="topbar">
+    <div class="wrap">
       <div class="nav">
-        <a class="brand" href="#top" aria-label="Vai in cima">
-          <div class="logo" aria-hidden="true"></div>
+        <a class="brand" href="#home" aria-label="Vai alla Home">
+          <div class="mark" aria-hidden="true">
+            <!-- Logo: <img src="assets/logo.png" alt="AD Studiocasa"> -->
+            <span>AD</span>
+          </div>
           <div>
             <h1>AD Studiocasa</h1>
-            <p>Falegnameria • Massello & su misura</p>
+            <p>Studio di Interior Design • Passo di Mirabella Eclano • In tutta Italia</p>
           </div>
         </a>
-        <nav aria-label="Sezioni">
-          <ul>
-            <li><a href="#servizi">Servizi</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#processo">Metodo</a></li>
-            <li><a href="#recensioni">Recensioni</a></li>
-            <li><a href="#contatti">Contatti</a></li>
-          </ul>
-        </nav>
-        <div class="cta">
-          <a class="btn" href="#contatti">Contatti</a>
-          <a class="btn primary" href="mailto:adstudiocasaf@gmail.com?subject=Richiesta%20preventivo">Email</a>
-          <button class="burger" type="button" aria-label="Apri menu" onclick="toggleMenu()"><span></span></button>
+
+        <div class="menu" aria-label="Menu">
+          <a class="link" href="#servizi">Servizi</a>
+          <a class="link" href="#metodo">Metodo</a>
+          <a class="link" href="#progetti">Progetti</a>
+          <a class="link" href="#contatti">Contatti</a>
+          <a class="btn primary" href="#contatti">Richiedi un preventivo</a>
         </div>
       </div>
-      <div id="mobileMenu" style="display:none; padding: 0 0 14px;">
-        <div class="card" style="padding:14px;">
-          <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <a class="btn" href="#servizi" onclick="toggleMenu()">Servizi</a>
-            <a class="btn" href="#portfolio" onclick="toggleMenu()">Portfolio</a>
-            <a class="btn" href="#processo" onclick="toggleMenu()">Metodo</a>
-            <a class="btn" href="#recensioni" onclick="toggleMenu()">Recensioni</a>
-            <a class="btn" href="#contatti" onclick="toggleMenu()">Contatti</a>
+    </div>
+  </div>
+
+  <header id="home" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="panel">
+          <div class="kicker"><span class="dot"></span> Progettazione • Su misura • Direzione lavori</div>
+          <h2 class="hero-title">Progetti d’interni su misura, con eleganza che dura.</h2>
+          <p class="hero-sub">
+            Layout, materiali, illuminazione e arredi su misura: un percorso chiaro, curato e concreto,
+            dal concept alla realizzazione.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contatti">Parliamo del tuo progetto</a>
+            <a class="btn" href="#progetti">Guarda i progetti</a>
           </div>
         </div>
+
+        <aside class="side">
+          <div>
+            <h3>Contatti rapidi</h3>
+            <p>✉️ <a href="mailto:adstudiocasaf@gmail.com">adstudiocasaf@gmail.com</a></p>
+            <p style="margin-top:10px" class="pill"><strong>Bio IG:</strong> Il tuo stile al centro • Eleganza che dura</p>
+          </div>
+
+          <div style="margin-top:18px">
+            <!-- WhatsApp: inserisci il numero sotto nello script -->
+            <a class="btn ghost" id="waBtn" href="#contatti" style="width:100%">WhatsApp (inserisci numero)</a>
+            <div style="height:10px"></div>
+            <a class="btn primary" href="#contatti" style="width:100%">Richiedi un preventivo</a>
+            <p class="fineprint" style="margin-top:10px">
+              Per una risposta rapida: città, misure, stile e una foto dell’ambiente.
+            </p>
+          </div>
+        </aside>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="kicker">✨ Artigianato + precisione su misura</div>
-            <h2>Arredi su misura che valorizzano la tua casa.</h2>
-            <p>
-              Progettiamo e realizziamo mobili in massello su misura, porte in massello, cucine su misura, boiserie, armadi e infissi (alluminio-legno, PVC e altre soluzioni).
-              Lavoriamo legni selezionati e finiture di alta gamma per un risultato elegante e duraturo — con consegna e montaggio in tutta Italia.
-            </p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn primary" href="#contatti">Richiedi un preventivo</a>
-              <a class="btn" href="#portfolio">Vedi i lavori</a>
-            </div>
-            <div class="points">
-              <div class="pill">Sopralluogo e rilievo misure</div>
-              <div class="pill">Proposta materiali & finiture</div>
-              <div class="pill">Montaggio professionale</div>
-              <div class="pill">Operativi in tutta Italia</div>
-            </div>
-          </div>
+  <section id="servizi">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Servizi</h2>
+          <p>Soluzioni complete per casa e attività.</p>
+        </div>
+        <span class="pill"><strong>Focus:</strong> su misura + coordinamento</span>
+      </div>
 
-          <div class="hero-media">
-            <div class="ph" role="img" aria-label="Spazio immagine principale"></div>
-            <div class="stats">
-              <div class="stat"><strong>Massello</strong><span>Solidità e prestigio</span></div>
-              <div class="stat"><strong>Su misura</strong><span>Dal progetto al montaggio</span></div>
-              <div class="stat"><strong>Tutta Italia</strong><span>Consegna e installazione</span></div>
-            </div>
-          </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Progettazione d’interni</h3>
+          <p>Concept, layout e render per vedere il risultato prima di realizzarlo.</p>
+        </div>
+        <div class="card">
+          <h3>Arredi su misura</h3>
+          <p>Cucine, armadi, boiserie e soluzioni personalizzate per ogni ambiente.</p>
+        </div>
+        <div class="card">
+          <h3>Illuminazione</h3>
+          <p>Studio luci e atmosfera: comfort, funzionalità e resa estetica.</p>
+        </div>
+        <div class="card">
+          <h3>Consulenza materiali</h3>
+          <p>Colori, rivestimenti e finiture: scelte guidate e coerenti nel tempo.</p>
+        </div>
+        <div class="card">
+          <h3>Restyling ambienti</h3>
+          <p>Rinnovo di spazi esistenti con interventi mirati e intelligenti.</p>
+        </div>
+        <div class="card">
+          <h3>Direzione lavori</h3>
+          <p>Coordinamento fornitori e controlli fino alla consegna finale.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="servizi">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Servizi</h3>
-            <p>Soluzioni complete: consulenza, progettazione, produzione e installazione — operativi in tutta Italia.</p>
-          </div>
-        </div>
-        <div class="grid">
-          <div class="card service"><div class="icon">MS</div><h4>Mobili in massello su misura</h4><p>Madie, pareti attrezzate, bagni, librerie e complementi progettati su richiesta, con dettagli sartoriali.</p></div>
-          <div class="card service"><div class="icon">PM</div><h4>Porte in massello</h4><p>Porte e portoni in massello con lavorazioni precise, verniciature professionali e cura dei particolari.</p></div>
-          <div class="card service"><div class="icon">CU</div><h4>Cucine su misura</h4><p>Massima ottimizzazione degli spazi, meccanismi e dettagli studiati per l’uso quotidiano.</p></div>
-          <div class="card service"><div class="icon">BO</div><h4>Boiserie</h4><p>Pannellature, cannettati, retroilluminazione e finiture decorative per un effetto luxury.</p></div>
-          <div class="card service"><div class="icon">AR</div><h4>Armadi</h4><p>Ante, interni e accessori personalizzati. Soluzioni funzionali e pulite, anche a tutta altezza.</p></div>
-          <div class="card service"><div class="icon">INF</div><h4>Infissi</h4><p>Alluminio-legno, PVC e altre configurazioni, con posa accurata e finiture coordinate.</p></div>
+  <section id="metodo">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Metodo</h2>
+          <p>Un percorso semplice: chiaro all’inizio, preciso fino alla fine.</p>
         </div>
       </div>
-    </section>
 
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Portfolio</h3>
-            <p>Aggiungi qui le foto migliori. In fondo trovi la galleria pronta (placeholder) che sostituiamo con i tuoi scatti.</p>
-          </div>
+      <div class="grid-2">
+        <div class="step">
+          <div class="num">1</div>
+          <div><b>Brief & rilievo</b><span>Esigenze, stile, misure e vincoli tecnici dell’ambiente.</span></div>
         </div>
-
-        <div class="grid">
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Cucina su misura</strong><span>Top, meccanismi e finiture</span></div></article>
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Porte in massello</strong><span>Lavorazioni e verniciature</span></div></article>
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Boiserie</strong><span>Dettagli e retroilluminazione</span></div></article>
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Armadi</strong><span>Ottimizzazione spazi</span></div></article>
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Mobile in massello</strong><span>Dettagli sartoriali</span></div></article>
-          <article class="card shot"><div class="thumb"></div><div class="meta"><strong>Infissi</strong><span>Alluminio-legno, PVC e pose</span></div></article>
-
-          <article class="card" style="grid-column: span 12;">
-            <div style="padding:16px 18px; border-bottom:1px solid var(--line);">
-              <strong style="display:block; font-size:14px;">Galleria foto</strong>
-              <span style="display:block; color:var(--muted); font-size:12.5px; margin-top:4px;">Struttura pronta: appena mi mandi le foto, le inserisco qui con titoli e descrizioni.</span>
-            </div>
-            <div style="padding:16px 18px; display:grid; grid-template-columns: repeat(12, 1fr); gap:12px;">
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 1</strong><span>Descrizione breve</span></figcaption></figure>
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 2</strong><span>Descrizione breve</span></figcaption></figure>
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 3</strong><span>Descrizione breve</span></figcaption></figure>
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 4</strong><span>Descrizione breve</span></figcaption></figure>
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 5</strong><span>Descrizione breve</span></figcaption></figure>
-              <figure class="card" style="grid-column: span 4; padding:0; overflow:hidden; margin:0;"><div class="thumb" style="height:170px;"></div><figcaption class="meta"><strong>Foto 6</strong><span>Descrizione breve</span></figcaption></figure>
-            </div>
-          </article>
+        <div class="step">
+          <div class="num">2</div>
+          <div><b>Concept & layout</b><span>Distribuzione spazi, volumi e prime scelte materiali.</span></div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div><b>Render & definizione</b><span>Dettagli: finiture, luci, arredi su misura, accessori.</span></div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div><b>Realizzazione</b><span>Gestione tempi e fornitori, controllo e consegna finale.</span></div>
         </div>
       </div>
-    </section>
 
-    <section id="processo">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Il nostro metodo</h3>
-            <p>Un percorso chiaro, con tempi e dettagli definiti.</p>
-          </div>
+      <p class="fineprint" style="margin-top:12px">
+        Vuoi “solo design” o “chiavi in mano”? Scrivicelo e ti proponiamo la soluzione migliore.
+      </p>
+    </div>
+  </section>
+
+  <section id="progetti">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Progetti</h2>
+          <p>Carica le tue foto in <b>assets/progetti/</b> (01.jpg … 06.jpg).</p>
         </div>
-        <div class="grid">
-          <div class="card step"><div class="num">Step 1</div><h4>Ascolto & sopralluogo</h4><p>Esigenze, misure e stile. Ti guidiamo nella scelta dei materiali.</p></div>
-          <div class="card step"><div class="num">Step 2</div><h4>Progetto</h4><p>Proposta tecnica ed estetica: layout, finiture, dettagli e preventivo trasparente.</p></div>
-          <div class="card step"><div class="num">Step 3</div><h4>Produzione</h4><p>Lavorazioni precise in laboratorio, controlli qualità e finiture professionali.</p></div>
-          <div class="card step"><div class="num">Step 4</div><h4>Montaggio</h4><p>Installazione pulita e puntuale, collaudo e cura dei dettagli finali.</p></div>
+        <a class="btn" href="#contatti">Voglio un progetto simile</a>
+      </div>
+
+      <div class="gallery" aria-label="Galleria progetti">
+        <div class="shot" data-full="assets/progetti/01.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/01.jpg" alt="Progetto 1" onerror="this.style.display='none';" />
+          <div class="cap"><b>Living</b>Layout + parete su misura</div>
+        </div>
+        <div class="shot" data-full="assets/progetti/02.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/02.jpg" alt="Progetto 2" onerror="this.style.display='none';" />
+          <div class="cap"><b>Cucina</b>Finiture e dettagli</div>
+        </div>
+        <div class="shot" data-full="assets/progetti/03.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/03.jpg" alt="Progetto 3" onerror="this.style.display='none';" />
+          <div class="cap"><b>Camera</b>Armadio e luci</div>
+        </div>
+        <div class="shot" data-full="assets/progetti/04.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/04.jpg" alt="Progetto 4" onerror="this.style.display='none';" />
+          <div class="cap"><b>Boiserie</b>Ritmo e materiali</div>
+        </div>
+        <div class="shot" data-full="assets/progetti/05.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/05.jpg" alt="Progetto 5" onerror="this.style.display='none';" />
+          <div class="cap"><b>Ingresso</b>Funzione e stile</div>
+        </div>
+        <div class="shot" data-full="assets/progetti/06.jpg" role="button" tabindex="0">
+          <img src="assets/progetti/06.jpg" alt="Progetto 6" onerror="this.style.display='none';" />
+          <div class="cap"><b>Bagno</b>Materiali e composizione</div>
         </div>
       </div>
-    </section>
 
-    <section id="recensioni">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Recensioni</h3>
-            <p>Sostituisci i testi con recensioni reali (Google / Instagram / passaparola).</p>
-          </div>
+      <p class="fineprint" style="margin-top:12px">
+        Se mi mandi le foto, ti preparo anche una cover e l’ordine “premium” dei progetti.
+      </p>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Contatti</h2>
+          <p>Descrivi ambiente, città e stile: ti rispondiamo con una prima idea e una stima.</p>
         </div>
-        <div class="grid">
-          <div class="card review"><p>“Qualità impeccabile e attenzione ai dettagli. La cucina è esattamente come la volevamo.”</p><div class="who">— Cliente, [Città]</div></div>
-          <div class="card review"><p>“Consigli preziosi sui materiali e montaggio perfetto. Professionali e puntuali.”</p><div class="who">— Cliente, [Città]</div></div>
-          <div class="card review"><p>“Boiserie bellissima, finitura top e luce integrata fatta benissimo. Super consigliati.”</p><div class="who">— Cliente, [Città]</div></div>
+        <span class="pill"><strong>Email:</strong> adstudiocasaf@gmail.com</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Richiedi informazioni</h3>
+
+          <form id="contactForm">
+            <input type="text" name="name" placeholder="Nome e cognome" autocomplete="name" />
+            <input type="tel" name="phone" placeholder="Telefono (opzionale)" autocomplete="tel" />
+            <input type="text" name="city" placeholder="Città / Provincia" autocomplete="address-level2" />
+            <textarea name="message" placeholder="Cosa vuoi realizzare? (misure, stile, budget indicativo se vuoi)"></textarea>
+
+            <button class="btn primary" type="button" id="sendBtn">Invia via Email</button>
+            <p class="fineprint">Si aprirà la mail già compilata.</p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Info</h3>
+          <p><b>Passo di Mirabella Eclano</b><br/>Operiamo in tutta Italia.</p>
+          <p style="margin-top:12px" class="pill"><strong>Instagram:</strong> Progetti su misura • Il tuo stile al centro • Eleganza che dura</p>
+          <p class="fineprint" style="margin-top:12px">
+            Vuoi WhatsApp attivo? Inserisci il numero nello script (riga “WHATSAPP_NUMBER”).
+          </p>
         </div>
       </div>
-    </section>
-
-    <section id="contatti" class="contact">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h3>Contatti</h3>
-            <p>Inviaci una richiesta via email (allega foto e misure). Rispondiamo di solito entro 24 ore lavorative.</p>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="card box">
-            <strong style="font-size:16px;">Richiesta preventivo</strong>
-            <p style="margin:6px 0 0; color:var(--muted); font-size:13.5px;">Compila i campi e invia la richiesta via email (script non incluso).</p>
-            <form class="form" onsubmit="return false;" aria-label="Modulo contatto">
-              <div><label for="name">Nome</label><input id="name" name="name" placeholder="Il tuo nome" autocomplete="name" /></div>
-              <div><label for="phone">Telefono</label><input id="phone" name="phone" placeholder="+39…" autocomplete="tel" /></div>
-              <div><label for="msg">Messaggio</label><textarea id="msg" name="msg" placeholder="Descrivi cosa ti serve (misure, materiali, città, tempi)…"></textarea></div>
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <a class="btn primary" href="mailto:adstudiocasaf@gmail.com?subject=Richiesta%20preventivo">Invia via Email</a>
-                <a class="btn" href="#portfolio">Vedi la galleria</a>
-              </div>
-              <small style="color:var(--muted)">Suggerimento: allega 2–3 foto e indica la città per tempi e sopralluogo.</small>
-            </form>
-          </div>
-
-          <aside class="card aside">
-            <div class="note">
-              <strong>Info rapide</strong>
-              <ul>
-                <li><b>Email:</b> adstudiocasaf@gmail.com</li>
-                <li><b>Sede:</b> Passo di Mirabella Eclano</li>
-                <li><b>Zona:</b> In tutta Italia</li>
-                <li><b>Orari:</b> Lun–Ven 8:00–18:00</li>
-              </ul>
-            </div>
-
-            <div class="card" style="margin-top:14px; padding:0; overflow:hidden;">
-              <div style="padding:14px 16px; border-bottom:1px solid var(--line);">
-                <strong>Mappa</strong>
-                <div style="color:var(--muted); font-size:12.5px; margin-top:4px;">Inserisci qui Google Maps iframe.</div>
-              </div>
-              <div style="height:220px; background: rgba(0,0,0,.18); position:relative;">
-                <div style="position:absolute; inset:14px; border-radius:14px; border:1px dashed rgba(255,255,255,.18); display:grid; place-items:center; color:rgba(233,238,246,.65); font-size:12px;">
-                  Incolla iframe di Google Maps
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      <div class="foot">
-        <div>© <span id="year"></span> AD Studiocasa — P.IVA [XXXXX]</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a href="#top" class="btn">Torna su</a>
-          <a href="#contatti" class="btn primary">Preventivo</a>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>© <span id="year"></span> AD Studiocasa • Studio di Interior Design</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a class="pill" href="#home"><strong>↑</strong> Torna su</a>
+          <a class="pill" href="mailto:adstudiocasaf@gmail.com"><strong>✉</strong> Email</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Modal immagini -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-inner" role="dialog" aria-label="Anteprima immagine">
+      <div class="modal-top">
+        <span id="modalTitle">Anteprima</span>
+        <button id="closeModal" type="button">Chiudi</button>
+      </div>
+      <img class="modal-img" id="modalImg" alt="Immagine progetto" />
+    </div>
+  </div>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function toggleMenu(){
-      const el = document.getElementById('mobileMenu');
-      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
+    // Anno footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // WhatsApp: inserisci il numero in formato internazionale (senza +)
+    // Esempio: "393331112233"
+    const WHATSAPP_NUMBER = ""; // <-- metti qui il numero
+    const waBtn = document.getElementById("waBtn");
+    if (waBtn) {
+      if (WHATSAPP_NUMBER) {
+        waBtn.textContent = "WhatsApp";
+        waBtn.href = "https://wa.me/" + WHATSAPP_NUMBER;
+        waBtn.target = "_blank";
+        waBtn.rel = "noopener";
+      } else {
+        waBtn.href = "#contatti";
+      }
     }
+
+    // Modal galleria
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const closeModal = document.getElementById("closeModal");
+
+    function openModal(src, title){
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      modalImg.src = src;
+      modalTitle.textContent = title || "Anteprima";
+    }
+    function hideModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+    }
+    closeModal.addEventListener("click", hideModal);
+    modal.addEventListener("click", (e)=>{ if(e.target === modal) hideModal(); });
+    document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") hideModal(); });
+
+    document.querySelectorAll(".shot").forEach(el=>{
+      const src = el.getAttribute("data-full");
+      const title = el.querySelector(".cap b")?.textContent || "Progetto";
+      el.addEventListener("click", ()=> openModal(src, title));
+      el.addEventListener("keydown", (e)=>{
+        if(e.key === "Enter" || e.key === " ") openModal(src, title);
+      });
+    });
+
+    // Invio email dal form
+    document.getElementById("sendBtn").addEventListener("click", ()=>{
+      const f = document.getElementById("contactForm");
+      const name = f.name.value.trim();
+      const phone = f.phone.value.trim();
+      const city = f.city.value.trim();
+      const msg = f.message.value.trim();
+
+      const subject = encodeURIComponent("Richiesta preventivo - AD Studiocasa (Interior Design)");
+      const body = encodeURIComponent(
+        `Ciao AD Studiocasa,\n\n` +
+        `Nome: ${name || "(non inserito)"}\n` +
+        `Telefono: ${phone || "(non inserito)"}\n` +
+        `Città/Provincia: ${city || "(non inserita)"}\n\n` +
+        `Dettagli progetto:\n${msg || "(messaggio non inserito)"}\n\n` +
+        `Grazie!`
+      );
+      window.location.href = `mailto:adstudiocasaf@gmail.com?subject=${subject}&body=${body}`;
+    });
   </script>
 </body>
 </html>
