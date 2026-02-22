@@ -3,503 +3,925 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AD Studiocasa | Studio di Interior Design</title>
-  <meta name="description" content="AD Studiocasa – Studio di Interior Design. Progettazione d’interni, arredi su misura, consulenze materiali e direzione lavori. Operiamo in tutta Italia." />
-  <meta name="theme-color" content="#ffffff" />
+  <title>AD Studiocasa — Interior Design & Falegnameria su Misura</title>
+  <meta name="description" content="Interior design e falegnameria su misura. Cucine, boiserie, armadi, porte e arredi premium realizzati artigianalmente in Italia." />
+  <meta name="theme-color" content="#0b0b0e" />
+
   <style>
     :root{
-      --bg:#ffffff;
-      --text:#111111;
-      --muted:#5b5b5b;
-      --line:#e8e8e8;
-      --card:#fafafa;
-      --accent:#1f1f1f;
-      --radius:16px;
-      --max:1100px;
-      --pad:22px;
+      --bg:#07070a;
+      --bg2:#0b0b10;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.88);
+      --muted: rgba(255,255,255,.64);
+      --gold: #d9b56b;
+      --gold2:#b8923a;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+      --max: 1200px;
+      --ease: cubic-bezier(.2,.9,.2,1);
     }
+
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color:var(--text);
-      line-height:1.55;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(217,181,107,.18), transparent 55%),
+        radial-gradient(900px 600px at 85% 30%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
+      overflow-x:hidden;
     }
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .container{width: min(var(--max), calc(100% - 40px)); margin-inline:auto}
+
+    /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:10;
-      background:rgba(255,255,255,.9);
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7,7,10,.82), rgba(7,7,10,.38));
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0; gap:14px;
+      padding: 14px 0;
+      gap:16px;
     }
-    .brand{display:flex; align-items:center; gap:12px; min-width:220px}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      border:1px solid var(--line);
-      display:grid; place-items:center;
-      background:#fff;
-      font-weight:800;
-      letter-spacing:.4px;
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 220px;
     }
-    /* Se hai un logo: crea assets/logo.png e usa:
-       .logo{padding:8px}
-       .logo img{width:100%; height:100%; object-fit:contain}
-    */
-    .brand h1{font-size:13px; margin:0; letter-spacing:.32px; text-transform:uppercase}
-    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
-    .menu{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:12px;
-      border:1px solid transparent;
+    .brand img{
+      width: 140px; max-width: 42vw; height:auto;
+      filter: drop-shadow(0 10px 24px rgba(0,0,0,.45));
+      opacity:.96;
     }
-    .menu a:hover{color:var(--text); background:var(--card); border-color:var(--line)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:11px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-weight:650;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease;
+    .navlinks{
+      display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .btn:hover{background:var(--card); transform: translateY(-1px)}
-    .btn.primary{
-      background:var(--accent);
-      border-color:var(--accent);
-      color:#fff;
+    .navlinks a{
+      font-size: 13px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      padding: 10px 10px;
+      border-radius: 999px;
+      transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
     }
-    .btn.primary:hover{background:#000}
+    .navlinks a:hover{
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      transform: translateY(-1px);
+    }
+    .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(217,181,107,.18), rgba(217,181,107,.08));
+      border: 1px solid rgba(217,181,107,.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      transition: transform .25s var(--ease), filter .25s var(--ease);
+      white-space:nowrap;
+    }
+    .cta:hover{transform: translateY(-1px); filter:brightness(1.05)}
+    .cta .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(217,181,107,.16);
+    }
 
-    header.hero{padding:34px 0 26px}
-    .hero-grid{
-      display:grid; grid-template-columns: 1.05fr .95fr;
-      gap:18px; align-items:stretch;
+    /* Hero */
+    .hero{
+      padding: 74px 0 40px;
+      position:relative;
     }
-    .hero-box{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:22px;
-      background:#fff;
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr; gap:18px}
     }
     .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      font-size:12px;
-      color:var(--muted);
-      background:var(--card);
-      width:fit-content;
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color: rgba(255,255,255,.68);
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      width: fit-content;
     }
-    .dot{width:8px; height:8px; border-radius:999px; background:#111}
-    .hero-title{
-      font-size:36px; line-height:1.1;
-      margin:14px 0 10px;
-      letter-spacing:-.6px;
+    .kicker span{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      box-shadow: 0 0 0 6px rgba(217,181,107,.14);
     }
-    .hero-sub{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:15px;
-      max-width:62ch;
+    h1{
+      margin: 16px 0 14px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
     }
-    .hero-actions{display:flex; gap:10px; flex-wrap:wrap}
+    .lead{
+      margin: 0 0 22px;
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+      font-weight: 600;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      border-color: rgba(217,181,107,.45);
+      background: linear-gradient(135deg, rgba(217,181,107,.22), rgba(217,181,107,.10));
+    }
+    .btn .arrow{opacity:.9}
 
-    .hero-media{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
+    .hero-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
       overflow:hidden;
-      background:var(--card);
-      display:flex; flex-direction:column;
+      position:relative;
+      min-height: 360px;
     }
-    .hero-media img{
-      width:100%;
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(600px 260px at 30% 0%, rgba(217,181,107,.22), transparent 60%),
+        radial-gradient(420px 260px at 80% 20%, rgba(255,255,255,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-card-inner{
+      position:relative;
+      padding: 22px;
       height:100%;
-      min-height: 260px;
-      object-fit:cover;
-      display:block;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:16px;
     }
-    .hero-media .media-cap{
-      padding:14px 16px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
+    .statgrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 520px){
+      .statgrid{grid-template-columns:1fr}
+    }
+    .stat{
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+    }
+    .stat .n{
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing:-0.01em;
+    }
+    .stat .l{
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      line-height: 1.35;
+    }
+    .badge{
+      display:flex; align-items:flex-start; gap:12px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(217,181,107,.28);
+      background: linear-gradient(135deg, rgba(217,181,107,.12), rgba(0,0,0,.18));
+    }
+    .badge .icon{
+      width:40px; height:40px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(217,181,107,.12);
+      border: 1px solid rgba(217,181,107,.25);
+      flex: 0 0 auto;
+    }
+    .badge p{margin:0; color: rgba(255,255,255,.76); line-height:1.45}
+    .badge strong{color: rgba(255,255,255,.94)}
+
+    /* Sections */
+    section{padding: 54px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      margin-bottom: 22px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(22px, 2.6vw, 32px);
+      letter-spacing:-0.01em;
+    }
+    .section-title .sub{
+      margin:0;
+      color: var(--muted);
+      max-width: 64ch;
+      line-height: 1.55;
+      font-size: 14.5px;
     }
 
-    section{padding:24px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:14px; margin-bottom:12px;
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
-    .section-head h2{margin:0; font-size:18px}
-    .section-head p{margin:0; font-size:13px; color:var(--muted)}
-
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
-    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
+    @media (max-width: 960px){ .cards{grid-template-columns:1fr} }
 
     .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:16px;
-      background:#fff;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      box-shadow: 0 16px 44px rgba(0,0,0,.40);
+      position:relative;
+      overflow:hidden;
     }
-    .card h3{margin:0 0 8px; font-size:14px}
-    .card p{margin:0; color:var(--muted); font-size:13px}
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(500px 220px at 10% 0%, rgba(217,181,107,.18), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+    .card h3{margin: 0 0 10px; font-size: 18px}
+    .card p{margin:0; color: var(--muted); line-height:1.6}
 
-    .process{
-      display:grid; grid-template-columns: repeat(4, 1fr);
-      gap:12px;
+    .pillrow{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;
     }
-    .step{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:16px;
-      background:var(--card);
+    .pill{
+      font-size:12px;
+      padding: 8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.72);
+      letter-spacing:.08em;
+      text-transform: uppercase;
     }
-    .step b{display:block; margin-bottom:6px}
-    .step span{color:var(--muted); font-size:13px}
 
-    .gallery{
+    /* Portfolio */
+    .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:12px;
+      gap: 12px;
     }
-    .shot{
+    .work{
       grid-column: span 4;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       overflow:hidden;
-      background:var(--card);
+      position:relative;
+      min-height: 230px;
       cursor:pointer;
+      transition: transform .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
     }
-    .shot img{width:100%; height:220px; object-fit:cover; display:block}
-    .shot .cap{
-      padding:12px 14px;
-      border-top:1px solid var(--line);
-      font-size:13px;
-      color:var(--muted);
+    .work:hover{
+      transform: translateY(-3px);
+      border-color: rgba(217,181,107,.32);
+      background: rgba(255,255,255,.05);
     }
-    .shot .cap b{display:block; color:var(--text); margin-bottom:2px}
+    .work .thumb{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(135deg, rgba(217,181,107,.18), rgba(255,255,255,.05)),
+        radial-gradient(700px 260px at 20% 0%, rgba(255,255,255,.10), transparent 65%),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+    }
+    .work img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      filter: saturate(1.05) contrast(1.02);
+      opacity:.92;
+    }
+    .work .meta{
+      position:absolute; left:14px; right:14px; bottom:14px;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+    }
+    .work .meta .t{
+      font-weight:800; letter-spacing:-0.01em;
+    }
+    .work .meta .d{
+      margin-top:6px;
+      font-size:12.5px;
+      color: rgba(255,255,255,.72);
+      line-height:1.35;
+    }
+    .work .chip{
+      font-size:12px;
+      padding: 8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(217,181,107,.28);
+      background: rgba(0,0,0,.25);
+      color: rgba(255,255,255,.82);
+      white-space:nowrap;
+    }
+    @media (max-width: 980px){ .work{grid-column: span 6} }
+    @media (max-width: 560px){ .work{grid-column: span 12} }
 
-    .fine{color:var(--muted); font-size:12px}
+    /* Process */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 960px){ .steps{grid-template-columns:1fr} }
+    .step{
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.035);
+    }
+    .step .num{
+      width:38px; height:38px; border-radius: 14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(217,181,107,.30);
+      background: rgba(217,181,107,.12);
+      font-weight:900;
+    }
+    .step h4{margin: 12px 0 8px}
+    .step p{margin:0; color: var(--muted); line-height:1.6}
 
-    form{display:grid; gap:10px}
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    @media (max-width: 960px){ .contact{grid-template-columns:1fr} }
+    .panel{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .field{
+      display:flex; flex-direction:column; gap:8px;
+      margin-top: 12px;
+    }
+    label{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color: rgba(255,255,255,.72)}
     input, textarea{
-      width:100%;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:12px 12px;
-      font-size:14px;
-      background:#fff;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: rgba(255,255,255,.88);
+      padding: 12px 12px;
       outline:none;
+      font-size: 14.5px;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
     }
-    textarea{min-height:120px; resize:vertical}
-    input:focus, textarea:focus{border-color:#bdbdbd}
+    textarea{min-height: 120px; resize:vertical}
+    input:focus, textarea:focus{
+      border-color: rgba(217,181,107,.45);
+      background: rgba(0,0,0,.28);
+    }
+    .fineprint{color: rgba(255,255,255,.60); font-size: 12.8px; line-height:1.6}
 
     footer{
-      padding:22px 0 30px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      margin-top:10px;
+      padding: 30px 0 70px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.62);
+      font-size: 13px;
     }
-    .foot{
-      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
-      align-items:flex-start;
+    footer .row{
+      display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
     }
 
     /* Modal */
-    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.72); padding:18px; z-index:99}
-    .modal.open{display:grid}
-    .modal-inner{
-      width:min(1000px, 96vw);
-      border-radius:16px;
+    .modal{
+      position:fixed; inset:0; z-index:80;
+      display:none;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(10px);
+      padding: 24px;
+    }
+    .modal.open{display:grid; place-items:center}
+    .modal .box{
+      width: min(980px, 100%);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,10,14,.82);
+      box-shadow: 0 30px 90px rgba(0,0,0,.65);
       overflow:hidden;
-      background:#fff;
     }
-    .modal-top{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 12px;
-      border-bottom:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
+    .modal .top{
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .modal-top button{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:10px;
-      padding:8px 10px;
+    .modal .top .title{
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .modal .close{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.9);
+      border-radius: 999px;
+      padding: 8px 12px;
       cursor:pointer;
     }
-    .modal-img{width:100%; max-height:75vh; object-fit:contain; display:block; background:#f4f4f4}
+    .modal img{
+      width:100%; height:auto; display:block;
+      max-height: 70vh; object-fit: contain;
+      background: rgba(0,0,0,.35);
+    }
+    .modal .cap{
+      padding: 14px 16px 18px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.6;
+      font-size: 14px;
+    }
 
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr}
-      .grid-3{grid-template-columns: 1fr}
-      .grid-2{grid-template-columns: 1fr}
-      .process{grid-template-columns: 1fr}
-      .shot{grid-column: span 6}
+    /* Watermark logo (raffinato) */
+    .watermark{
+      position:fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 40;
+      pointer-events:none;
+      opacity: .22; /* discreto */
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.55));
     }
-    @media (max-width: 560px){
-      .menu a{display:none}
-      .shot{grid-column: span 12}
-      .hero-title{font-size:30px}
+    .watermark img{
+      width: 120px; max-width: 34vw;
+      height:auto;
     }
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform: translateY(10px); transition: opacity .7s var(--ease), transform .7s var(--ease)}
+    .reveal.in{opacity:1; transform: translateY(0)}
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#home" aria-label="Home">
-          <div class="logo" aria-hidden="true">AD</div>
-          <div>
-            <h1>AD Studiocasa</h1>
-            <p>Studio di Interior Design • Passo di Mirabella Eclano • In tutta Italia</p>
-          </div>
-        </a>
-        <div class="menu" aria-label="Menu">
-          <a href="#servizi">Servizi</a>
-          <a href="#metodo">Metodo</a>
-          <a href="#progetti">Progetti</a>
-          <a href="#contatti">Contatti</a>
-          <a class="btn primary" href="#contatti">Preventivo</a>
-        </div>
-      </div>
-    </div>
+  <!-- Watermark in basso a destra: logo solo scritta, bianco, discreto -->
+  <div class="watermark" aria-hidden="true">
+    <img src="assets/logo-white.png" onerror="this.src='assets/logo.png'" alt="" />
   </div>
 
-  <header id="home" class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-box">
-          <div class="kicker"><span class="dot"></span> Progettazione • Su misura • Direzione lavori</div>
-          <h2 class="hero-title">Interior design su misura, essenziale e curato.</h2>
-          <p class="hero-sub">
-            Progettiamo spazi funzionali e coerenti: layout, materiali, illuminazione e arredi su misura.
-            Il tuo stile al centro, con un risultato che dura nel tempo.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#contatti">Parliamo del progetto</a>
-            <a class="btn" href="#progetti">Vedi i lavori</a>
-          </div>
-          <p class="fine" style="margin-top:12px">
-            Email: <a href="mailto:adstudiocasaf@gmail.com"><b>adstudiocasaf@gmail.com</b></a>
-          </p>
-        </div>
+  <header class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#home" aria-label="Home">
+          <img src="assets/logo.png" alt="Logo azienda" />
+        </a>
 
-        <div class="hero-media" aria-label="Immagine di copertina">
-          <!-- Sostituisci con una tua foto: assets/cover.jpg -->
-          <img src="assets/cover.jpg" alt="Copertina AD Studiocasa" onerror="this.style.display='none'; this.parentElement.style.minHeight='260px';" />
-          <div class="media-cap">
-            Inserisci una foto forte (living/cucina) per dare subito impatto.
-          </div>
-        </div>
+        <nav class="navlinks" aria-label="Navigazione">
+          <a href="#servizi">Servizi</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#processo">Processo</a>
+          <a href="#contatti">Contatti</a>
+          <a class="cta" href="#contatti"><span class="dot"></span> Preventivo</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <section id="servizi">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Servizi</h2>
-          <p>Soluzioni complete per casa e attività.</p>
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="reveal">
+            <div class="kicker"><span></span> Interior Design • Falegnameria • Su Misura</div>
+            <h1>Spazi su misura, dettagli da collezione.</h1>
+            <p class="lead">
+              Progettiamo e realizziamo arredi sartoriali: cucine, boiserie, armadi, porte e complementi.
+              Uniamo design, artigianalità e materiali premium per risultati impeccabili.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#portfolio">Guarda i lavori <span class="arrow">→</span></a>
+              <a class="btn" href="#contatti">Richiedi consulenza <span class="arrow">↗</span></a>
+            </div>
+
+            <div class="pillrow" aria-label="Punti di forza">
+              <span class="pill">Progetto + Realizzazione</span>
+              <span class="pill">Finiture di alta gamma</span>
+              <span class="pill">Made in Italy</span>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal" aria-label="Valore e qualità">
+            <div class="hero-card-inner">
+              <div class="badge">
+                <div class="icon" aria-hidden="true">✦</div>
+                <p><strong>Luxury su misura</strong><br/>Proporzioni, materiali e dettagli pensati per durare e valorizzare lo spazio.</p>
+              </div>
+
+              <div class="statgrid" role="list">
+                <div class="stat" role="listitem">
+                  <div class="n">100%</div>
+                  <div class="l">Progetti personalizzati</div>
+                </div>
+                <div class="stat" role="listitem">
+                  <div class="n">Premium</div>
+                  <div class="l">Finiture & ferramenta</div>
+                </div>
+                <div class="stat" role="listitem">
+                  <div class="n">Italia</div>
+                  <div class="l">Produzione artigianale</div>
+                </div>
+              </div>
+
+              <p class="fineprint">
+                * Sostituisci nome azienda, contatti e testi in base alla tua identità.
+                Quando mi mandi le foto, aggiorno il portfolio con le immagini reali e le descrizioni.
+              </p>
+            </div>
+          </aside>
         </div>
       </div>
+    </section>
 
-      <div class="grid-3">
-        <div class="card"><h3>Progettazione d’interni</h3><p>Concept, layout e render per vedere la proposta prima di realizzarla.</p></div>
-        <div class="card"><h3>Arredi su misura</h3><p>Cucine, armadi, boiserie e soluzioni personalizzate per ogni ambiente.</p></div>
-        <div class="card"><h3>Illuminazione</h3><p>Studio luci e atmosfera: comfort, funzionalità e resa estetica.</p></div>
-        <div class="card"><h3>Consulenza materiali</h3><p>Colori, rivestimenti e finiture: scelte guidate e coerenti nel tempo.</p></div>
-        <div class="card"><h3>Restyling</h3><p>Interventi mirati per migliorare spazi esistenti con budget ottimizzato.</p></div>
-        <div class="card"><h3>Direzione lavori</h3><p>Coordinamento fornitori e controllo qualità fino alla consegna finale.</p></div>
-      </div>
-    </div>
-  </section>
+    <section id="servizi">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Servizi</h2>
+            <p class="sub">Dalla consulenza al montaggio: un percorso completo, curato in ogni millimetro.</p>
+          </div>
+        </div>
 
-  <section id="metodo">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Metodo</h2>
-          <p>Chiaro all’inizio, preciso fino alla fine.</p>
-        </div>
-      </div>
-
-      <div class="process">
-        <div class="step"><b>1) Brief & rilievo</b><span>Esigenze, misure, stile e vincoli tecnici.</span></div>
-        <div class="step"><b>2) Concept & layout</b><span>Distribuzione spazi e proposta progettuale.</span></div>
-        <div class="step"><b>3) Render & dettagli</b><span>Materiali, luci, arredi su misura e finiture.</span></div>
-        <div class="step"><b>4) Realizzazione</b><span>Gestione tempi, fornitori e consegna finale.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="progetti">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Progetti</h2>
-          <p>Carica le foto in <b>assets/progetti/</b> (01.jpg … 06.jpg).</p>
-        </div>
-        <a class="btn" href="#contatti">Richiedi una consulenza</a>
-      </div>
-
-      <div class="gallery">
-        <div class="shot" data-full="assets/progetti/01.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/01.jpg" alt="Progetto 01" onerror="this.style.display='none';" />
-          <div class="cap"><b>Living</b>Layout + parete su misura</div>
-        </div>
-        <div class="shot" data-full="assets/progetti/02.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/02.jpg" alt="Progetto 02" onerror="this.style.display='none';" />
-          <div class="cap"><b>Cucina</b>Finiture e dettagli</div>
-        </div>
-        <div class="shot" data-full="assets/progetti/03.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/03.jpg" alt="Progetto 03" onerror="this.style.display='none';" />
-          <div class="cap"><b>Camera</b>Armadio e luci</div>
-        </div>
-        <div class="shot" data-full="assets/progetti/04.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/04.jpg" alt="Progetto 04" onerror="this.style.display='none';" />
-          <div class="cap"><b>Boiserie</b>Ritmo e materiali</div>
-        </div>
-        <div class="shot" data-full="assets/progetti/05.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/05.jpg" alt="Progetto 05" onerror="this.style.display='none';" />
-          <div class="cap"><b>Ingresso</b>Funzione e stile</div>
-        </div>
-        <div class="shot" data-full="assets/progetti/06.jpg" tabindex="0" role="button">
-          <img src="assets/progetti/06.jpg" alt="Progetto 06" onerror="this.style.display='none';" />
-          <div class="cap"><b>Bagno</b>Materiali e composizione</div>
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Interior Design & Progettazione</h3>
+            <p>Layout, moodboard, materiali, render e soluzioni tecniche: un progetto chiaro prima della realizzazione.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Falegnameria su Misura</h3>
+            <p>Cucine, boiserie, armadi, porte e arredi custom con lavorazioni precise e finiture raffinate.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Finiture & Posa</h3>
+            <p>Verniciature, laccature, essenze pregiate, ferramenta premium e installazione con massima cura.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <p class="fine" style="margin-top:12px">
-        Se vuoi, posso anche impostare una pagina “Progetti” separata (più professionale quando crescono le foto).
-      </p>
-    </div>
-  </section>
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Portfolio</h2>
+            <p class="sub">
+              Qui trovi una selezione di lavori. Per ora sono placeholder: quando mi mandi le foto, li sostituisco con i tuoi progetti reali.
+            </p>
+          </div>
+          <a class="btn" href="#contatti">Vuoi qualcosa di simile? <span class="arrow">→</span></a>
+        </div>
 
-  <section id="contatti">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <h2>Contatti</h2>
-          <p>Scrivici città, misure e stile: ti rispondiamo con una prima idea e una stima.</p>
+        <div class="grid" id="workGrid" aria-label="Galleria lavori">
+          <!-- Cards generate da JS -->
         </div>
       </div>
+    </section>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Richiesta</h3>
-          <form id="contactForm">
-            <input type="text" name="name" placeholder="Nome e cognome" autocomplete="name" />
-            <input type="tel" name="phone" placeholder="Telefono (opzionale)" autocomplete="tel" />
-            <input type="text" name="city" placeholder="Città / Provincia" autocomplete="address-level2" />
-            <textarea name="message" placeholder="Descrivi l’ambiente e cosa vuoi realizzare (budget indicativo opzionale)."></textarea>
-            <button class="btn primary" type="button" id="sendBtn">Invia via Email</button>
-            <p class="fine">Si aprirà la mail già compilata.</p>
-          </form>
+    <section id="processo">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Processo</h2>
+            <p class="sub">Trasparente, ordinato, impeccabile: così nasce un lavoro di livello.</p>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Info</h3>
-          <p><b>AD Studiocasa</b><br/>Passo di Mirabella Eclano • In tutta Italia</p>
-          <p style="margin-top:10px">
-            <a class="btn" href="mailto:adstudiocasaf@gmail.com">Email</a>
-          </p>
-          <p class="fine" style="margin-top:12px">
-            Bio IG: <b>Progetti su misura • Il tuo stile al centro • Eleganza che dura</b>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <div class="foot">
-        <div>© <span id="year"></span> AD Studiocasa • Studio di Interior Design</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn" href="#home">Torna su</a>
-          <a class="btn" href="mailto:adstudiocasaf@gmail.com">Contatta</a>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="num">1</div>
+            <h4>Brief & Sopralluogo</h4>
+            <p>Ascolto, misure, esigenze e budget: definiamo obiettivi e priorità.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">2</div>
+            <h4>Progetto & Materiali</h4>
+            <p>Proposta estetica e tecnica, materiali e finiture selezionati con cura.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">3</div>
+            <h4>Produzione</h4>
+            <p>Realizzazione artigianale con controlli qualità e dettagli su misura.</p>
+          </div>
+          <div class="step reveal">
+            <div class="num">4</div>
+            <h4>Installazione</h4>
+            <p>Montaggio preciso, pulizia e consegna: tutto pronto da vivere.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <section id="contatti">
+      <div class="container">
+        <div class="section-title reveal">
+          <div>
+            <h2>Contatti</h2>
+            <p class="sub">Raccontami cosa vuoi realizzare: ti rispondo con una proposta chiara e su misura.</p>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="panel reveal">
+            <h3 style="margin:0 0 6px;">Richiedi un preventivo</h3>
+            <p class="fineprint" style="margin:0 0 10px;">
+              Compila i campi e premi “Invia”: aprirò la tua email con il testo già pronto.
+            </p>
+
+            <form id="contactForm">
+              <div class="field">
+                <label for="name">Nome</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Il tuo nome" required />
+              </div>
+              <div class="field">
+                <label for="phone">Telefono</label>
+                <input id="phone" name="phone" autocomplete="tel" placeholder="+39 ..." />
+              </div>
+              <div class="field">
+                <label for="msg">Messaggio</label>
+                <textarea id="msg" name="msg" placeholder="Descrivi il progetto (misure, stile, tempistiche)…" required></textarea>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+                <button class="btn primary" type="submit">Invia richiesta <span class="arrow">→</span></button>
+                <a class="btn" href="#portfolio">Vedi portfolio</a>
+              </div>
+            </form>
+
+            <p class="fineprint" style="margin-top:12px;">
+              Email destinatario: <strong id="contactEmail">info@tuodominio.it</strong> (modifica in fondo al file).
+            </p>
+          </div>
+
+          <div class="panel reveal">
+            <h3 style="margin:0 0 6px;">Info rapide</h3>
+            <p class="fineprint" style="margin:0 0 14px;">
+              Personalizza questi dati con la tua città, zona di lavoro e canali social.
+            </p>
+
+            <div class="cards" style="grid-template-columns:1fr; margin-top:0;">
+              <div class="card" style="box-shadow:none;">
+                <h3 style="margin-bottom:8px;">Servizi principali</h3>
+                <p>Cucine su misura • Boiserie • Armadi • Porte • Arredi in massello • Infissi e soluzioni integrate</p>
+              </div>
+              <div class="card" style="box-shadow:none;">
+                <h3 style="margin-bottom:8px;">Area</h3>
+                <p>Italia • Lavori su progetto con consulenza e installazione.</p>
+              </div>
+              <div class="card" style="box-shadow:none;">
+                <h3 style="margin-bottom:8px;">Social</h3>
+                <p>Instagram / Facebook / Pinterest — aggiungi qui i link quando vuoi.</p>
+              </div>
+            </div>
+
+            <p class="fineprint" style="margin-top:14px;">
+              Vuoi una versione “one-page” ancora più minimal o una versione multi-pagina (Home/Portfolio/Contatti)?
+              Posso adattarla al tuo stile.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div>© <span id="year"></span> AD Studiocasa — Interior Design & Falegnameria</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#home">Torna su</a>
+            <span aria-hidden="true">•</span>
+            <a href="#contatti">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
 
   <!-- Modal -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-inner" role="dialog" aria-label="Anteprima immagine">
-      <div class="modal-top">
-        <span id="modalTitle">Anteprima</span>
-        <button id="closeModal" type="button">Chiudi</button>
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Anteprima lavoro">
+    <div class="box">
+      <div class="top">
+        <div class="title" id="modalTitle">Titolo</div>
+        <button class="close" id="modalClose" type="button">Chiudi ✕</button>
       </div>
-      <img class="modal-img" id="modalImg" alt="Immagine progetto" />
+      <img id="modalImg" alt="Anteprima lavoro" />
+      <div class="cap" id="modalCap"></div>
     </div>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // === PERSONALIZZA QUI ===
+    const COMPANY_NAME = "AD Studiocasa"; // cambia se vuoi
+    const CONTACT_EMAIL = "info@tuodominio.it"; // metti la tua email (es. adstudiocasaf@gmail.com)
 
-    // Modal galleria
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTitle = document.getElementById("modalTitle");
-    const closeModal = document.getElementById("closeModal");
+    // Portfolio placeholder: quando mi mandi le foto, sostituiamo src con i tuoi file reali.
+    // Suggerimento: metti le immagini in /assets/portfolio/ e aggiorna i percorsi.
+    const WORKS = [
+      {
+        title: "Cucina su misura",
+        tag: "Cucine",
+        desc: "Geometrie pulite, dettagli premium e finitura sartoriale.",
+        src: "" // es: "assets/portfolio/cucina-01.jpg"
+      },
+      {
+        title: "Boiserie cannettata",
+        tag: "Boiserie",
+        desc: "Ritmo materico e luce: un fondale scenografico e raffinato.",
+        src: ""
+      },
+      {
+        title: "Armadiatura su progetto",
+        tag: "Armadi",
+        desc: "Capienza ottimizzata, interni organizzati e finiture di pregio.",
+        src: ""
+      },
+      {
+        title: "Porta in massello",
+        tag: "Porte",
+        desc: "Presenza importante, qualità tattile e lavorazione artigianale.",
+        src: ""
+      },
+      {
+        title: "Mobile living",
+        tag: "Arredi",
+        desc: "Equilibrio tra estetica e funzionalità, proporzioni su misura.",
+        src: ""
+      },
+      {
+        title: "Dettagli di finitura",
+        tag: "Finiture",
+        desc: "Laccature, essenze e ferramenta: la differenza è nei particolari.",
+        src: ""
+      }
+    ];
 
-    function openModal(src, title){
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      modalImg.src = src;
-      modalTitle.textContent = title || "Anteprima";
-    }
-    function hideModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
-    closeModal.addEventListener("click", hideModal);
-    modal.addEventListener("click", (e)=>{ if(e.target === modal) hideModal(); });
-    document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") hideModal(); });
+    // === UI ===
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
 
-    document.querySelectorAll(".shot").forEach(el=>{
-      const src = el.getAttribute("data-full");
-      const title = el.querySelector(".cap b")?.textContent || "Progetto";
-      el.addEventListener("click", ()=> openModal(src, title));
-      el.addEventListener("keydown", (e)=>{
-        if(e.key === "Enter" || e.key === " ") openModal(src, title);
+    // Update contact email in UI
+    document.getElementById("contactEmail").textContent = CONTACT_EMAIL;
+    document.title = `${COMPANY_NAME} — Interior Design & Falegnameria su Misura`;
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
-    // invio email
-    document.getElementById("sendBtn").addEventListener("click", ()=>{
-      const f = document.getElementById("contactForm");
-      const name = f.name.value.trim();
-      const phone = f.phone.value.trim();
-      const city = f.city.value.trim();
-      const msg = f.message.value.trim();
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.classList.add("in");
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-      const subject = encodeURIComponent("Richiesta - AD Studiocasa (Interior Design)");
+    // Build portfolio grid
+    const grid = document.getElementById("workGrid");
+    const placeholderDataUri = (label) => {
+      const svg = encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="rgba(217,181,107,0.22)"/>
+              <stop offset="1" stop-color="rgba(255,255,255,0.06)"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <rect x="40" y="40" width="1120" height="720" rx="28" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.16)"/>
+          <text x="70" y="120" fill="rgba(255,255,255,0.86)" font-size="44" font-family="system-ui, -apple-system, Segoe UI, Roboto">
+            ${label}
+          </text>
+          <text x="70" y="175" fill="rgba(255,255,255,0.62)" font-size="22" font-family="system-ui, -apple-system, Segoe UI, Roboto">
+            Placeholder — sostituire con foto reale
+          </text>
+        </svg>
+      `);
+      return `data:image/svg+xml;charset=utf-8,${svg}`;
+    };
+
+    WORKS.forEach((w, idx) => {
+      const item = document.createElement("article");
+      item.className = "work reveal";
+      item.tabIndex = 0;
+      item.setAttribute("role", "button");
+      item.setAttribute("aria-label", `Apri ${w.title}`);
+
+      const thumb = document.createElement("div");
+      thumb.className = "thumb";
+
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.alt = w.title;
+      img.src = w.src || placeholderDataUri(w.title);
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.innerHTML = `
+        <div>
+          <div class="t">${w.title}</div>
+          <div class="d">${w.desc}</div>
+        </div>
+        <div class="chip">${w.tag}</div>
+      `;
+
+      item.appendChild(img);
+      item.appendChild(thumb);
+      item.appendChild(meta);
+
+      const open = () => openModal(w.title, w.desc, img.src);
+      item.addEventListener("click", open);
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+      });
+
+      grid.appendChild(item);
+      io.observe(item);
+    });
+
+    // Modal logic
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalImg = document.getElementById("modalImg");
+    const modalCap = document.getElementById("modalCap");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal(title, cap, src){
+      modalTitle.textContent = title;
+      modalCap.textContent = cap;
+      modalImg.src = src;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+
+    // Contact form => mailto
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const msg = document.getElementById("msg").value.trim();
+
+      const subject = encodeURIComponent(`Richiesta preventivo — ${COMPANY_NAME}`);
       const body = encodeURIComponent(
-        `Ciao AD Studiocasa,\n\n` +
-        `Nome: ${name || "(non inserito)"}\n` +
-        `Telefono: ${phone || "(non inserito)"}\n` +
-        `Città/Provincia: ${city || "(non inserita)"}\n\n` +
-        `Dettagli:\n${msg || "(messaggio non inserito)"}\n\n` +
-        `Grazie!`
+`Ciao ${COMPANY_NAME},
+mi chiamo ${name}.
+Telefono: ${phone || "—"}
+
+Richiesta:
+${msg}
+
+Grazie!`
       );
-      window.location.href = `mailto:adstudiocasaf@gmail.com?subject=${subject}&body=${body}`;
+
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     });
   </script>
 </body>
